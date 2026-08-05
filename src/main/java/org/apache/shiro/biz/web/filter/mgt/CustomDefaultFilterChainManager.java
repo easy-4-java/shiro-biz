@@ -1,8 +1,8 @@
 package org.apache.shiro.biz.web.filter.mgt;
 
 import org.apache.shiro.config.Ini;
-import org.apache.shiro.lang.util.Nameable;
-import org.apache.shiro.lang.util.StringUtils;
+import org.apache.shiro.util.Nameable;
+import org.apache.shiro.util.StringUtils;
 import org.apache.shiro.util.CollectionUtils;
 import org.apache.shiro.web.config.IniFilterChainResolverFactory;
 import org.apache.shiro.web.filter.AccessControlFilter;

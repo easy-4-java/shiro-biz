@@ -15,7 +15,7 @@
  */
 package org.apache.shiro.biz.web.env;
 
-import org.apache.shiro.lang.util.ClassUtils;
+import org.apache.shiro.util.ClassUtils;
 import org.apache.shiro.web.env.IniWebEnvironment;
 import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 import org.apache.shiro.web.filter.authz.RolesAuthorizationFilter;

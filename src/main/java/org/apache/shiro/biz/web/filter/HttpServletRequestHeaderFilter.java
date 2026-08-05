@@ -16,7 +16,7 @@
 package org.apache.shiro.biz.web.filter;
 
 import com.google.common.net.HttpHeaders;
-import org.apache.shiro.lang.util.StringUtils;
+import org.apache.shiro.util.StringUtils;
 import org.apache.shiro.web.filter.AccessControlFilter;
 import org.apache.shiro.web.util.WebUtils;
 import org.slf4j.Logger;

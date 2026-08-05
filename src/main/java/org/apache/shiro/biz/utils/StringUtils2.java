@@ -49,7 +49,7 @@ public abstract class StringUtils2 {
 	 * @return 分割后的字符串数组
 	 */
 	public static String[] tokenizeToStringArray(String str) {
-		return org.apache.shiro.lang.util.StringUtils.tokenizeToStringArray(str, CONFIG_LOCATION_DELIMITERS, true, true);
+		return org.apache.shiro.util.StringUtils.tokenizeToStringArray(str, CONFIG_LOCATION_DELIMITERS, true, true);
 	}
 
     public static String join(final Iterable<?> iterable, final String separator) {

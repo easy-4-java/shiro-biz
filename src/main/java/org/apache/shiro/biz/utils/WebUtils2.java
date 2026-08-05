@@ -16,7 +16,7 @@
 package org.apache.shiro.biz.utils;
 
 import com.google.common.net.HttpHeaders;
-import org.apache.shiro.lang.ShiroException;
+import org.apache.shiro.ShiroException;
 import org.apache.shiro.web.util.RequestPairSource;
 import org.springframework.http.HttpMethod;
 
@@ -109,7 +109,7 @@ public class WebUtils2 {
 		String remoteAddr = null;
 		for (String header : headers) {
 			remoteAddr = org.apache.shiro.web.util.WebUtils.toHttp(request).getHeader(header);
-			if(org.apache.shiro.lang.util.StringUtils.hasText(remoteAddr) && !UNKNOWN.equalsIgnoreCase(remoteAddr)){
+			if(org.apache.shiro.util.StringUtils.hasText(remoteAddr) && !UNKNOWN.equalsIgnoreCase(remoteAddr)){
 				break;
 			}
 		}

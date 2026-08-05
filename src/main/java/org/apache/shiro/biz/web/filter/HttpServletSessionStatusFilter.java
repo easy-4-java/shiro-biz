@@ -5,7 +5,7 @@ import org.apache.shiro.biz.authc.AuthcResponse;
 import org.apache.shiro.biz.utils.WebUtils2;
 import org.apache.shiro.biz.web.Constants;
 import org.apache.shiro.biz.web.servlet.http.HttpStatus;
-import org.apache.shiro.lang.util.StringUtils;
+import org.apache.shiro.util.StringUtils;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.session.mgt.DefaultSessionKey;
 import org.apache.shiro.session.mgt.SessionManager;

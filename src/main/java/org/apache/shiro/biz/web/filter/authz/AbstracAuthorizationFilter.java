@@ -24,7 +24,7 @@ import org.apache.shiro.biz.authz.AuthorizationFailureHandler;
 import org.apache.shiro.biz.authz.AuthorizationSuccessHandler;
 import org.apache.shiro.biz.utils.WebUtils2;
 import org.apache.shiro.biz.web.servlet.http.HttpStatus;
-import org.apache.shiro.lang.util.StringUtils;
+import org.apache.shiro.util.StringUtils;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.CollectionUtils;
 import org.apache.shiro.util.ThreadContext;
