@@ -1,6 +1,6 @@
 # shiro-biz
 
-![Java](https://img.shields.io/badge/Java-21-orange) ![License](https://img.shields.io/badge/License-Apache%202.0-blue)
+[English](./README.md) | [简体中文](./README.zh-CN.md)
 
 Business-oriented extensions for Apache Shiro. `shiro-biz` is the shared foundation of the easy4j Shiro family: authentication tokens and handlers, authorization annotations and permission models, cache managers (Caffeine, Guava, Spring, HTTP session), session support, web filters and utilities — all on top of Shiro 1.13.0.
 
