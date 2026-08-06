@@ -2,6 +2,8 @@
 
 [English](./README.md) | [简体中文](./README.zh-CN.md)
 
+[![Java](https://img.shields.io/badge/Java-17-orange)](https://github.com/easy-4-java/shiro-biz) [![License](https://img.shields.io/badge/license-Apache%202.0-green)](./LICENSE)
+
 面向 Apache Shiro 的业务化扩展。`shiro-biz` 是 easy4j Shiro 系列组件共享的基础层：认证 Token 与处理器、授权注解与权限模型、缓存管理器（Caffeine、Guava、Spring、HTTP Session）、会话支持、Web 过滤器与工具类——全部基于 Shiro 1.13.0。
 
 ## 目录
