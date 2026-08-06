@@ -17,7 +17,7 @@ import java.io.IOException;
 
 /**
  * <p>Request Method Filter, 对跨域提供支持</p>
- * @author <a href="https://github.com/hiwepy">hiwepy</a>
+ * @author [@Loong Wan](https://github.com/loong10k)
  */
 public class HttpServletRequestMethodFilter extends AccessControlFilter {
 

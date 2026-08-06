@@ -17,7 +17,7 @@ import java.io.IOException;
 
 /**
  * 会话超时过滤器
- * @author <a href="https://github.com/hiwepy">hiwepy</a>
+ * @author [@Loong Wan](https://github.com/loong10k)
  * https://blog.csdn.net/ZhangjcGG/article/details/79014030
  */
 public class HttpServletSessionExpiredFilter extends AccessControlFilter {

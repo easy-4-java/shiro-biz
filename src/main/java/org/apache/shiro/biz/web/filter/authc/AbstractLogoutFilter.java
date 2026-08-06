@@ -23,7 +23,7 @@ import java.util.Locale;
 
 /**
  * 扩展Shiro登出逻辑，增加监听回调接口
- * @author 		： <a href="https://github.com/hiwepy">hiwepy</a>
+ * @author [@Loong Wan](https://github.com/loong10k)
  */
 public abstract class AbstractLogoutFilter extends LogoutFilter {
 	
