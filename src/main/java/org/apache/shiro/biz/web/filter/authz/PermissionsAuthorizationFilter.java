@@ -9,7 +9,7 @@ import java.io.IOException;
 /**
  * 
  * TODO
- * @author <a href="https://github.com/hiwepy">hiwepy</a>
+ * @author [@Loong Wan](https://github.com/loong10k)
  * @see org.apache.shiro.web.filter.authz.PermissionsAuthorizationFilter
  */
 public class PermissionsAuthorizationFilter extends AbstracAuthorizationFilter {
