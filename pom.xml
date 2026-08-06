@@ -495,7 +495,7 @@
         <guava.version>33.2.1-jre</guava.version>
         <junit.version>4.13.2</junit.version>
         <java.version>21</java.version>
-        <jwt-issuer.version>3.0.x.20260630-SNAPSHOT</jwt-issuer.version>
+        <easy4j-jwt-issuer.version>3.0.x.20260630-SNAPSHOT</easy4j-jwt-issuer.version>
         <maven.version>3.0</maven.version>
         <!-- Maven Plugin versions -->
         <maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
@@ -616,7 +616,7 @@
             <dependency>
                 <groupId>io.github.easy4j</groupId>
                 <artifactId>jwt-issuer-api</artifactId>
-                <version>${jwt-issuer.version}</version>
+                <version>${easy4j-jwt-issuer.version}</version>
             </dependency>
             <!-- For Lombok -->
             <dependency>
