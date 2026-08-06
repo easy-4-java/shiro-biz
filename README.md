@@ -1,91 +1,252 @@
 # shiro-biz
 
-## 说明
+![Java](https://img.shields.io/badge/Java-21-orange) ![License](https://img.shields.io/badge/License-Apache%202.0-blue)
 
+Business-oriented extensions for Apache Shiro. `shiro-biz` is the shared foundation of the easy4j Shiro family: authentication tokens and handlers, authorization annotations and permission models, cache managers (Caffeine, Guava, Spring, HTTP session), session support, web filters and utilities — all on top of Shiro 1.13.0.
 
- > 基于Shiro的基础扩展，以便方便业务开发
+## Table of Contents
 
-###Subject：
+- [1. Project Overview](#1-project-overview)
+- [2. Features & Status](#2-features--status)
+- [3. Requirements & Compatibility](#3-requirements--compatibility)
+- [4. Architecture & Modules](#4-architecture--modules)
+- [5. Installation](#5-installation)
+- [6. Quick Start](#6-quick-start)
+- [7. Configuration](#7-configuration)
+- [8. Core Usage / API](#8-core-usage--api)
+- [9. Testing & Build](#9-testing--build)
+- [10. Versioning & Branches](#10-versioning--branches)
+- [11. Contributing & License](#11-contributing--license)
 
-主体，可以看到主体可以是任何可以与应用交互的“用户”；
+## 1. Project Overview
 
-###SecurityManager：
+**What it is**
 
-相当于SpringMVC中的DispatcherServlet或者Struts2中的FilterDispatcher；是Shiro的心脏；所有具体的交互都通过SecurityManager进行控制；它管理着所有Subject、且负责进行认证和授权、及会话、缓存的管理。
+`shiro-biz` is the common business extension layer for Apache Shiro, so that application development against Shiro is more convenient. It provides: authentication tokens with captcha and password-strength support, authentication failure/success handlers with a response model, retry-limited credentials matchers, modular realm authentication strategies, business-oriented authentication exceptions, a `ShiroPrincipal` / `ShiroRole` / `ShiroPermission` model, `@RolesAllowed` annotation support, pluggable cache managers, online-session support, request/response web filters (headers, referrer, rate limiting, HTML escaping, session status), and utility classes.
 
-###Authenticator：
+**What it is not**
 
-认证器，负责主体认证的，这是一个扩展点，如果用户觉得Shiro默认的不好，可以自定义实现；其需要认证策略（Authentication Strategy），即什么情况下算用户认证通过了；
+- It is not an application framework or a Spring Boot starter — it is a plain jar of Shiro extensions.
+- It does not bundle Shiro itself as a shaded jar; `org.apache.shiro:shiro-spring` is a regular dependency.
 
-###Authrizer：
+**Typical scenarios**
 
-授权器，或者访问控制器，用来决定主体是否有权限进行相应的操作；即控制着用户能访问应用中的哪些功能；
-Realm：可以有1个或多个Realm，可以认为是安全实体数据源，即用于获取安全实体的；可以是JDBC实现，也可以是LDAP实现，或者内存实现等等；由用户提供；注意：Shiro不知道你的用户/权限存储在哪及以何种格式存储；所以我们一般在应用中都需要实现自己的Realm；
+| Scenario | Description |
+| :--- | :--- |
+| Form / REST login flows | Use `TrustableFormAuthenticatingFilter` / `TrustableRestAuthenticatingFilter` with `DefaultAuthenticationToken` (captcha, remember-me, host). |
+| Login failure handling | `DefaultAuthenticationFailureHandler` + `AuthcResponse` map exceptions to a uniform response model; retry limits via `CredentialsRetryLimitCredentialsMatcher`. |
+| Authorization model | `ShiroPrincipalRepository` / `ShiroPrincipal` with `BitPermission` / wildcard permissions and `@RolesAllowed` AOP. |
+| Caching | Swap Shiro `CacheManager` implementations: `CaffeineCacheManager`, `GuavaCacheManager`, `SpringCacheManager`, `SessionCacheManager`. |
+| Web hardening | `HttpServletShiroFilter`, header/referrer/method/limit filters, `HttpServletSessionDequeFilter` (online user control). |
 
-###SessionManager：
+## 2. Features & Status
 
-如果写过Servlet就应该知道Session的概念，Session呢需要有人去管理它的生命周期，这个组件就是SessionManager；而Shiro并不仅仅可以用在Web环境，也可以用在如普通的JavaSE环境、EJB等环境；所有呢，Shiro就抽象了一个自己的Session来管理主体与应用之间交互的数据；这样的话，比如我们在Web环境用，刚开始是一台Web服务器；接着又上了台EJB服务器；这时想把两台服务器的会话数据放到一个地方，这个时候就可以实现自己的分布式会话（如把数据放到Memcached服务器）；
+| Capability | Status | Notes |
+| :--- | :--- | :--- |
+| Authentication tokens (`authc.token`) | Available | `DefaultAuthenticationToken` (captcha, strength), `CaptchaAuthenticationToken`, `LoginTypeAuthenticationToken`, `PwdStrengthAuthenticationToken`, `UsernameWithoutPwdToken`, `LoginProtocolAuthenticationToken`, `LoginType`. |
+| Authentication handlers (`authc`) | Available | `AuthenticationSuccessHandler` / `AuthenticationFailureHandler` + defaults, `AuthcResponse` / `AuthcResponseCode`, `AuthenticationListenerAdapter`. |
+| Credential matchers (`authc.credential`) | Available | `DefaultCredentialsMatcher`, `CredentialsRetryLimitCredentialsMatcher`. |
+| Modular realm auth (`authc.pam`) | Available | `DefaultModularRealmAuthenticator`, `AtLeastTwoAuthenticatorStrategy`, `OnlyOneAuthenticatorStrategy`. |
+| Business exceptions (`authc.exception`) | Available | Captcha/ticket/token/secret/session/terminal related exceptions. |
+| Authorization annotations (`authz.annotation` / `authz.aop`) | Available | `@RolesAllowed` + `RolesAllowedAnnotationHandler` + `RoleAllowsAnnotationMethodInterceptor`. |
+| Permission model (`authz.permission`, `authz.principal`) | Available | `BitPermission`, `BitAndWildPermissionResolver`, `DefaultRolePermissionResolver`, `ShiroPrincipal`, `ShiroRole`, `ShiroPermission`, `ShiroPrincipalRepository` (+`Impl`). |
+| Cache managers (`cache`) | Available | Caffeine, Guava, Spring, HTTP-session based managers and wrappers. |
+| Realm base (`realm`) | Available | `AbstractAuthorizingRealm` with `ShiroPrincipalRepository` and realm listeners. |
+| Session support (`session`) | Available | `SimpleOnlineSession` (+ factory), `SequenceSessionIdGenerator`, `SpringSessionValidationScheduler`, `DefaultSessionListener`. |
+| Web filters (`web.filter`) | Available | Header/referrer/method/limit/escape/session-deque/session-status filters, `HttpServletShiroFilter`. |
+| Spring integration (`spring`) | Available | `ShiroFilterProxyFactoryBean`, annotation interceptors/advisor. |
+| i18n messages | Available | `messages.properties` (+ `en_US`, `zh_CN`), `ShiroBizMessageSource`. |
 
-###SessionDAO：
+> Status is reported as of `3.0.x.x.20260630-SNAPSHOT` on the `feature/3.0.x` branch.
 
-DAO大家都用过，数据访问对象，用于会话的CRUD，比如我们想把Session保存到数据库，那么可以实现自己的SessionDAO，通过如JDBC写到数据库；比如想把Session放到Memcached中，可以实现自己的Memcached SessionDAO；另外SessionDAO中可以使用Cache进行缓存，以提高性能；
+## 3. Requirements & Compatibility
 
-###CacheManager：
+| Item | Version |
+| :--- | :--- |
+| JDK | 21+ |
+| Maven | 3.0+ (Maven Wrapper 3.5.0 bundled) |
+| Apache Shiro | 1.13.0 (`shiro-spring`) |
+| Spring Framework | 5.3.36 (`spring-webmvc`) |
+| easy4j dependency | `io.github.easy4j:jwt-issuer-api` |
+| JSON / serialization | fastjson2 2.0.52, jackson-databind 2.17.2, flexjson, xstream |
+| Other | caffeine 2.9.3, guava 33.2.1-jre, commons-lang3 / commons-text / commons-io, javax.servlet-api 4.0.1 |
 
-缓存控制器，来管理如用户、角色、权限等的缓存的；因为这些数据基本上很少去改变，放到缓存中后可以提高访问的性能
+**Version lines**
 
-###Cryptography：
+| Branch | JDK baseline | Version pattern |
+| :--- | :--- | :--- |
+| `feature/1.0.x` | JDK 8 | `1.0.x.*` |
+| `feature/2.0.x` | JDK 17 | `2.0.x.*` |
+| `feature/3.0.x` | JDK 21 | `3.0.x.*` |
 
-密码模块，Shiro提高了一些常见的加密组件用于如密码加密/解密的。
+## 4. Architecture & Modules
 
-
-```java
-//获取唯一主键对象
-    Object uniquely = token.getPrincipal();
-
-    Principal principal = this.getPrincipal(uniquely);
-    /*
-        如果身份验证失败请捕获AuthenticationException或其子类，常见的如：
-        	DisabledAccountException（禁用的帐号）、
-        	LockedAccountException（锁定的帐号）、
-        	UnknownAccountException（错误的帐号）、
-        	ExcessiveAttemptsException（登录失败次数过多）、
-        	IncorrectCredentialsException （错误的凭证）、
-        	ExpiredCredentialsException（过期的凭证）等，具体请查看其继承关系；
-        	对于页面的错误消息展示，最好使用如“用户名/密码错误”而不是“用户名错误”/“密码错误”，防止一些恶意用户非法扫描帐号库；
-       */
-     if(principal == null) {
-        //没找到帐号
-        throw new UnknownAccountException(PrincipalRealmEnum.UNKONWN_ACCOUNT.getText());
-        }
-        
-        if(Boolean.TRUE.equals(principal.getDisabled())) {
-       //帐号锁定
-            throw new DisabledAccountException(PrincipalRealmEnum.DISABLED_ACCOUNT.getText()); 
-        }
-        
-        if(Boolean.TRUE.equals(principal.getLocked())) {
-        //帐号锁定
-            throw new LockedAccountException(PrincipalRealmEnum.LOCKED_ACCOUNT.getText());
-        }
-
-        //交给AuthenticatingRealm使用CredentialsMatcher进行密码匹配，如果觉得人家的不好可以自定义实现
-        
-        SimpleAccount add  = new SimpleAccount(principal, hashedCredentials, credentialsSalt, realmName)
-        SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
-                principal.getUsername(), //用户名
-                principal.getPassword(), //密码
-                ByteSource.Util.bytes(principal.getCredentialsSalt()),//salt=username+salt
-                getName()  //realm name
-       );
+```text
+ HTTP request
+      |
+      v
+ HttpServletShiroFilter / filter chain (web.filter)
+      |-- header / referrer / method / limit / escape filters
+      |-- authc: TrustableForm/RestAuthenticatingFilter (captcha, retry)
+      |-- authz: Roles / AnyRoles / Permissions authorization filters
+      v
+ DefaultModularRealmAuthenticator (pam strategies)
+      |
+      v
+ AbstractAuthorizingRealm <-- ShiroPrincipalRepository
+      |                          (ShiroPrincipal / Role / Permission)
+      +-- cache: Caffeine / Guava / Spring / Session managers
+      +-- session: SimpleOnlineSession + session DAO / validation
+      +-- authz: @RolesAllowed AOP + BitPermission resolver
+      v
+ Subject (authentication result) --> handlers --> AuthcResponse (JSON)
 ```
 
-### Maven Dependency
+This is a **single-module** project (packaging `jar`, ~130 classes under `org.apache.shiro.biz`):
 
-``` xml
+| Package | Role |
+| :--- | :--- |
+| `authc` / `authc.token` / `authc.credential` / `authc.pam` / `authc.exception` | Authentication tokens, handlers, matchers, strategies and exceptions |
+| `authz` / `authz.annotation` / `authz.aop` / `authz.permission` / `authz.principal` | Authorization handlers, `@RolesAllowed`, permission resolvers, principal model |
+| `cache` (`caffeine`, `guava`, `http`, `spring`) | Pluggable `CacheManager` implementations |
+| `realm` | `AbstractAuthorizingRealm` and realm listeners |
+| `session` / `session.mgt` | Online session model, id generator, validation scheduler |
+| `spring` / `spring.security.interceptor` | Spring integration: filter proxy factory bean, annotation interceptors |
+| `web` (`filter`, `filter.authc`, `filter.authz`, `servlet`, `mgt`, `env`) | Servlet filters, servlets, subject factory, INI web environment |
+| `utils` | `HmacSHA256Utils`, `PasswordEncryptUtils`, `IDWorker`, `SubjectUtils`, `SerializeUtils`, `WebUtils2`, `WebThreadContext`, UID `Sequence` |
+
+## 5. Installation
+
+The artifact is not yet published to Maven Central. Resolve it from the project's configured artifact repository (Aliyun Packages) or install it locally from source; the snapshot version currently used on the `feature/3.0.x` branch is `3.0.x.x.20260630-SNAPSHOT`.
+
+**Maven**
+
+```xml
 <dependency>
-	<groupId>com.github.hiwepy</groupId>
-	<artifactId>shiro-biz</artifactId>
-	<version>1.2.0.RELEASE</version>
+    <groupId>io.github.easy4j</groupId>
+    <artifactId>shiro-biz</artifactId>
+    <version>3.0.x.x.20260630-SNAPSHOT</version>
 </dependency>
 ```
+
+**Gradle**
+
+```groovy
+implementation 'io.github.easy4j:shiro-biz:3.0.x.x.20260630-SNAPSHOT'
+```
+
+## 6. Quick Start
+
+A minimal realm backed by `ShiroPrincipalRepository`:
+
+```java
+import org.apache.shiro.authc.AuthenticationInfo;
+import org.apache.shiro.authc.AuthenticationToken;
+import org.apache.shiro.authz.principal.ShiroPrincipalRepository;
+import org.apache.shiro.authz.principal.ShiroPrincipalRepositoryImpl;
+import org.apache.shiro.biz.authc.credential.DefaultCredentialsMatcher;
+import org.apache.shiro.biz.realm.AbstractAuthorizingRealm;
+
+ShiroPrincipalRepository repository = new ShiroPrincipalRepositoryImpl() {
+    @Override
+    public AuthenticationInfo getAuthenticationInfo(AuthenticationToken token)
+            throws AuthenticationException {
+        // load the user from your business system by token principal
+        // and return e.g. a SimpleAuthenticationInfo(principal, hash, salt, realmName)
+        return /* your AuthenticationInfo */ null;
+    }
+
+    @Override
+    public Set<String> getRoles(Object principal) {
+        return /* roles of the principal */ Collections.emptySet();
+    }
+
+    @Override
+    public Set<String> getPermissions(Object principal) {
+        return /* permissions of the principal */ Collections.emptySet();
+    }
+};
+
+AbstractAuthorizingRealm realm = new AbstractAuthorizingRealm() {};
+realm.setRepository(repository);
+realm.setCredentialsMatcher(new DefaultCredentialsMatcher());
+// realm.setCacheManager(new CaffeineCacheManager()); // optional caching
+```
+
+**Expected result:** `realm` performs authentication through `ShiroPrincipalRepository.getAuthenticationInfo(token)` and authorization through `getRoles` / `getPermissions`; registered with a `SecurityManager`, it supports `subject.login(token)` and permission checks.
+
+## 7. Configuration
+
+This is a library: there are no configuration properties or prefixes. Behavior is configured through constructor/bean injection:
+
+| Extension point | Configurable via |
+| :--- | :--- |
+| `AbstractAuthorizingRealm` | `setRepository(ShiroPrincipalRepository)`, `setRealmsListeners(List)`, `setCredentialsMatcher(...)` |
+| `CredentialsRetryLimitCredentialsMatcher` | retry limit and caching settings (backed by a `CacheManager`) |
+| Realm cache | `setCacheManager(CaffeineCacheManager / GuavaCacheManager / SpringCacheManager / SessionCacheManager)` |
+| Filters (`HttpServletShiroFilter` and friends) | bean properties and the Shiro filter-chain definition |
+| i18n messages | bundled `org/apache/shiro/biz/messages*.properties`, `ShiroBizMessageSource` |
+
+## 8. Core Usage / API
+
+Selected public API (all classes under `org.apache.shiro.biz`):
+
+| Class | Role |
+| :--- | :--- |
+| `authc.token.DefaultAuthenticationToken` | `UsernamePasswordToken` subclass with captcha and password-strength support. |
+| `authc.pam.DefaultModularRealmAuthenticator` | Modular realm authenticator with business strategies (`AtLeastTwoAuthenticatorStrategy`, `OnlyOneAuthenticatorStrategy`). |
+| `authc.credential.CredentialsRetryLimitCredentialsMatcher` | Credentials matcher that locks after exceeding a retry limit. |
+| `authz.principal.ShiroPrincipal` | Serializable principal model (userid, userkey, usercode, username, password, salt, secret, ...). |
+| `authz.principal.ShiroPrincipalRepository` (+`Impl`) | Principal lookup contract used by realms. |
+| `authz.permission.BitPermission` / `BitAndWildPermissionResolver` | Bit + wildcard permission model. |
+| `cache.caffeine.CaffeineCacheManager` / `cache.guava.GuavaCacheManager` / `cache.spring.SpringCacheManager` | `CacheManager` implementations for Shiro. |
+| `session.mgt.eis.SequenceSessionIdGenerator` | Session id generator (sequence based). |
+| `spring.ShiorFilterProxyFactoryBean`* | Spring factory bean for the Shiro filter proxy. |
+| `web.filter.HttpServletSessionDequeFilter` | Online-user session control (kick-out support). |
+| `utils.HmacSHA256Utils` / `utils.PasswordEncryptUtils` | Hashing / encryption helpers. |
+
+\* Class name as declared in source: `ShiroFilterProxyFactoryBean` (extends `ShiroFilterFactoryBean`).
+
+**Utility example (hashes a `ShiroPrincipal`'s password in place):**
+
+```java
+import org.apache.shiro.biz.authz.principal.ShiroPrincipal;
+import org.apache.shiro.biz.utils.PasswordEncryptUtils;
+
+ShiroPrincipal user = new ShiroPrincipal("admin", "plain-password");
+PasswordEncryptUtils.encryptPassword(user); // md5, 2 hash iterations by default
+```
+
+## 9. Testing & Build
+
+```bash
+# Full build with tests and JaCoCo coverage report/check
+./mvnw clean verify
+
+# Run tests only
+./mvnw test
+
+# Install into the local repository
+./mvnw install
+```
+
+Test & gate facts (as configured in the pom):
+
+- JUnit 4 tests exist under `src/test/java` (`org.apache.shiro.biz.LoginLogoutTest`, `org.apache.shiro.biz.CodecAndCryptoTest`) covering login/logout and codec/crypto topics; a `web-fragment.xml` test resource is bundled.
+- JaCoCo is bound to `prepare-agent` / `report` / `check`; the `check` rule requires a **90% line coverage ratio** (configured with `haltOnFailure=false`, i.e. reported rather than hard-failing).
+
+## 10. Versioning & Branches
+
+| Branch | JDK baseline | Version pattern | Status |
+| :--- | :--- | :--- | :--- |
+| `feature/1.0.x` | JDK 8 | `1.0.x.*` | Active; current snapshot `1.0.x.20260630-SNAPSHOT` |
+| `feature/2.0.x` | JDK 17 | `2.0.x.*` | Maintained |
+| `feature/3.0.x` | JDK 21 | `3.0.x.*` | Maintained |
+
+Maintenance strategy: the 1.0.x line keeps JDK 8 compatibility for legacy deployments; the 2.0.x and 3.0.x lines are the modern JDK baselines. Release artifacts are published to the project's configured artifact repository (Aliyun Packages) and GitHub Releases; the project has not yet published to Maven Central.
+
+## 11. Contributing & License
+
+Contributions are welcome — please open an issue or a pull request on the [GitHub repository](https://github.com/easy-4-java/shiro-biz). Code style follows the existing conventions of the repository (4-space indentation, commented Maven plugin/dependency blocks).
+
+This project is licensed under the **Apache License 2.0**. See [LICENSE](LICENSE) for details.
