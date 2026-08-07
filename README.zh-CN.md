@@ -1,10 +1,10 @@
-# shiro-biz
+# shiro-extension
 
 [English](./README.md) | [简体中文](./README.zh-CN.md)
 
-[![Java](https://img.shields.io/badge/Java-21-orange)](https://github.com/easy-4-java/shiro-biz) [![License](https://img.shields.io/badge/license-Apache%202.0-green)](./LICENSE)
+[![Java](https://img.shields.io/badge/Java-21-orange)](https://github.com/easy-4-java/shiro-extension) [![License](https://img.shields.io/badge/license-Apache%202.0-green)](./LICENSE)
 
-面向 Apache Shiro 的业务化扩展。`shiro-biz` 是 easy4j Shiro 系列组件共享的基础层：认证 Token 与处理器、授权注解与权限模型、缓存管理器（Caffeine、Guava、Spring、HTTP Session）、会话支持、Web 过滤器与工具类——全部基于 Shiro 1.13.0。
+面向 Apache Shiro 的业务化扩展。`shiro-extension` 通过 `shiro-extension-core` 与 `shiro-extension-spring` 分离无 Spring 依赖的基础能力和 Spring 集成能力。
 
 ## 目录
 
@@ -24,11 +24,11 @@
 
 **是什么**
 
-`shiro-biz` 是基于 Shiro 的基础扩展，以便方便业务开发。它提供：支持验证码与密码强度的认证 Token、带统一响应模型的认证失败/成功处理器、带重试限制的凭证匹配器、模块化 Realm 认证策略、面向业务的认证异常、`ShiroPrincipal` / `ShiroRole` / `ShiroPermission` 主体模型、`@RolesAllowed` 注解支持、可插拔缓存管理器、在线会话支持、请求/响应 Web 过滤器（请求头、Referrer、限流、HTML 转义、会话状态）以及工具类。
+`shiro-extension` 是 Apache Shiro 的通用扩展层。core 模块提供无 Spring 依赖的认证、授权、缓存、会话、Servlet 与工具能力；spring 模块提供处理器、过滤器、消息源、调度和 Shiro-Spring 集成。
 
 **不是什么**
 
-- 它不是应用框架或 Spring Boot Starter——它是一个普通的 Shiro 扩展 jar。
+- 它不是应用框架或 Spring Boot Starter——它是由两个模块组成的 Shiro 扩展库。
 - 它不会将 Shiro 打成 shaded jar 随包发布；`org.apache.shiro:shiro-spring` 是普通依赖。
 
 **典型场景**
@@ -59,7 +59,7 @@
 | Spring 集成（`spring`） | 可用 | `ShiroFilterProxyFactoryBean`、注解拦截器/顾问。 |
 | i18n 消息 | 可用 | `messages.properties`（+`en_US`、`zh_CN`）、`ShiroBizMessageSource`。 |
 
-> 状态以 `feature/3.0.x` 分支上的 `3.0.x.x.20260630-SNAPSHOT` 为准。
+> 状态以 `feature/3.0.x` 分支上的 `3.0.x.20260630-SNAPSHOT` 为准。
 
 ## 3. Requirements & Compatibility
 
@@ -67,7 +67,7 @@
 | :--- | :--- |
 | JDK | 21+ |
 | Maven | 3.0+（内置 Maven Wrapper 3.5.0） |
-| Apache Shiro | 1.13.0（`shiro-spring`） |
+| Apache Shiro | 2.0.1（`shiro-web`、`shiro-spring`） |
 | Spring Framework | 5.3.36（`spring-webmvc`） |
 | easy4j 依赖 | `io.github.easy4j:jwt-issuer-api` |
 | JSON / 序列化 | fastjson2 2.0.52、jackson-databind 2.17.2、flexjson、xstream |
@@ -104,7 +104,12 @@
  Subject（认证结果）--> 处理器 --> AuthcResponse（JSON）
 ```
 
-本项目为**单模块**工程（packaging 为 `jar`，`org.apache.shiro.biz` 下约 130 个类）：
+本项目是包含两个模块的 Maven 父工程：
+
+| 模块 | 职责 |
+| :--- | :--- |
+| `shiro-extension-core` | 不依赖 Spring 的 Shiro 认证、授权、缓存、会话、Servlet 与工具扩展 |
+| `shiro-extension-spring` | Spring 处理器、过滤器、消息源、调度和 Shiro-Spring 集成；依赖 core |
 
 | 包 | 职责 |
 | :--- | :--- |
@@ -119,22 +124,22 @@
 
 ## 5. Installation
 
-该构件尚未发布到 Maven Central。请从项目配置的制品仓库（阿里云制品仓库）获取，或从源码本地安装；`feature/3.0.x` 分支当前使用的快照版本为 `3.0.x.x.20260630-SNAPSHOT`。
+制品发布到项目配置的阿里云制品仓库。无 Spring 场景可单独使用 core；Spring 场景使用 spring 模块，它会传递依赖 core。
 
 **Maven**
 
 ```xml
 <dependency>
     <groupId>io.github.easy4j</groupId>
-    <artifactId>shiro-biz</artifactId>
-    <version>3.0.x.x.20260630-SNAPSHOT</version>
+    <artifactId>shiro-extension-spring</artifactId>
+    <version>3.0.x.20260630-SNAPSHOT</version>
 </dependency>
 ```
 
 **Gradle**
 
 ```groovy
-implementation 'io.github.easy4j:shiro-biz:3.0.x.x.20260630-SNAPSHOT'
+implementation 'io.github.easy4j:shiro-extension-spring:3.0.x.20260630-SNAPSHOT'
 ```
 
 ## 6. Quick Start
@@ -249,6 +254,6 @@ PasswordEncryptUtils.encryptPassword(user); // 默认 md5，2 次哈希迭代
 
 ## 11. Contributing & License
 
-欢迎参与贡献——请在 [GitHub 仓库](https://github.com/easy-4-java/shiro-biz) 提交 Issue 或 Pull Request。代码风格遵循仓库既有约定（4 空格缩进、Maven 插件/依赖块带注释）。
+欢迎参与贡献——请在 [GitHub 仓库](https://github.com/easy-4-java/shiro-extension) 提交 Issue 或 Pull Request。代码风格遵循仓库既有约定（4 空格缩进、Maven 插件/依赖块带注释）。
 
 本项目基于 **Apache License 2.0** 开源。详见 [LICENSE](LICENSE)。
