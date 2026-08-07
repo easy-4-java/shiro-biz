@@ -1,10 +1,10 @@
-# shiro-biz
+# shiro-extension
 
 [English](./README.md) | [简体中文](./README.zh-CN.md)
 
-[![Java](https://img.shields.io/badge/Java-8-orange)](https://github.com/easy-4-java/shiro-biz) [![License](https://img.shields.io/badge/license-Apache%202.0-green)](./LICENSE)
+[![Java](https://img.shields.io/badge/Java-8-orange)](https://github.com/easy-4-java/shiro-extension) [![License](https://img.shields.io/badge/license-Apache%202.0-green)](./LICENSE)
 
-Business-oriented extensions for Apache Shiro. `shiro-biz` is the shared foundation of the easy4j Shiro family: authentication tokens and handlers, authorization annotations and permission models, cache managers (Caffeine, Guava, Spring, HTTP session), session support, web filters and utilities — all on top of Shiro 1.13.0.
+Business-oriented extensions for Apache Shiro. `shiro-extension` separates the Spring-independent foundation from Spring integration through `shiro-extension-core` and `shiro-extension-spring`.
 
 ## Table of Contents
 
@@ -24,11 +24,11 @@ Business-oriented extensions for Apache Shiro. `shiro-biz` is the shared foundat
 
 **What it is**
 
-`shiro-biz` is the common business extension layer for Apache Shiro, so that application development against Shiro is more convenient. It provides: authentication tokens with captcha and password-strength support, authentication failure/success handlers with a response model, retry-limited credentials matchers, modular realm authentication strategies, business-oriented authentication exceptions, a `ShiroPrincipal` / `ShiroRole` / `ShiroPermission` model, `@RolesAllowed` annotation support, pluggable cache managers, online-session support, request/response web filters (headers, referrer, rate limiting, HTML escaping, session status), and utility classes.
+`shiro-extension` is the common extension layer for Apache Shiro. The core module provides Spring-independent authentication, authorization, caching, session, servlet and utility support; the Spring module provides handlers, filters, message sources, scheduling and Shiro-Spring integration.
 
 **What it is not**
 
-- It is not an application framework or a Spring Boot starter — it is a plain jar of Shiro extensions.
+- It is not an application framework or a Spring Boot starter — it is a two-module Shiro extension library.
 - It does not bundle Shiro itself as a shaded jar; `org.apache.shiro:shiro-spring` is a regular dependency.
 
 **Typical scenarios**
@@ -67,7 +67,7 @@ Business-oriented extensions for Apache Shiro. `shiro-biz` is the shared foundat
 | :--- | :--- |
 | JDK | 8+ |
 | Maven | 3.0+ (Maven Wrapper 3.5.0 bundled) |
-| Apache Shiro | 1.13.0 (`shiro-spring`) |
+| Apache Shiro | 1.13.0 (`shiro-web`, `shiro-spring`) |
 | Spring Framework | 5.3.36 (`spring-webmvc`) |
 | easy4j dependency | `io.github.easy4j:jwt-issuer-api` |
 | JSON / serialization | fastjson2 2.0.52, jackson-databind 2.17.2, flexjson, xstream |
@@ -104,7 +104,12 @@ Business-oriented extensions for Apache Shiro. `shiro-biz` is the shared foundat
  Subject (authentication result) --> handlers --> AuthcResponse (JSON)
 ```
 
-This is a **single-module** project (packaging `jar`, ~130 classes under `org.apache.shiro.biz`):
+This is a Maven parent with two modules:
+
+| Module | Role |
+| :--- | :--- |
+| `shiro-extension-core` | Spring-independent Shiro authentication, authorization, cache, session, servlet and utility extensions |
+| `shiro-extension-spring` | Spring handlers, filters, message source, scheduling and Shiro-Spring integration; depends on core |
 
 | Package | Role |
 | :--- | :--- |
@@ -119,14 +124,14 @@ This is a **single-module** project (packaging `jar`, ~130 classes under `org.ap
 
 ## 5. Installation
 
-The artifact is not yet published to Maven Central. Resolve it from the project's configured artifact repository (Aliyun Packages) or install it locally from source; the snapshot version currently used on the `feature/1.0.x` branch is `1.0.x.20260630-SNAPSHOT`.
+The artifacts are published to the configured Aliyun Packages repository. Use core alone for Spring-independent integration, or use the Spring module, which transitively includes core.
 
 **Maven**
 
 ```xml
 <dependency>
     <groupId>io.github.easy4j</groupId>
-    <artifactId>shiro-biz</artifactId>
+    <artifactId>shiro-extension-spring</artifactId>
     <version>1.0.x.20260630-SNAPSHOT</version>
 </dependency>
 ```
@@ -134,7 +139,7 @@ The artifact is not yet published to Maven Central. Resolve it from the project'
 **Gradle**
 
 ```groovy
-implementation 'io.github.easy4j:shiro-biz:1.0.x.20260630-SNAPSHOT'
+implementation 'io.github.easy4j:shiro-extension-spring:1.0.x.20260630-SNAPSHOT'
 ```
 
 ## 6. Quick Start
@@ -249,6 +254,6 @@ Maintenance strategy: the 1.0.x line keeps JDK 8 compatibility for legacy deploy
 
 ## 11. Contributing & License
 
-Contributions are welcome — please open an issue or a pull request on the [GitHub repository](https://github.com/easy-4-java/shiro-biz). Code style follows the existing conventions of the repository (4-space indentation, commented Maven plugin/dependency blocks).
+Contributions are welcome — please open an issue or a pull request on the [GitHub repository](https://github.com/easy-4-java/shiro-extension). Code style follows the existing conventions of the repository (4-space indentation, commented Maven plugin/dependency blocks).
 
 This project is licensed under the **Apache License 2.0**. See [LICENSE](LICENSE) for details.
