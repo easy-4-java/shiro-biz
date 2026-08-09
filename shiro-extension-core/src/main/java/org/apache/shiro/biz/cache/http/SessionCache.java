@@ -35,6 +35,11 @@ import java.util.Set;
 /**
  * SESSION缓存管理类
  */
+/**
+ * Session Cache.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public class SessionCache<K, V> implements Cache<K, V> {
 
 	private Logger logger = LoggerFactory.getLogger(getClass());

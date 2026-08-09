@@ -19,6 +19,11 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+/**
+ * Simple Online Session.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 @SuppressWarnings("serial")
 public class SimpleOnlineSession extends SimpleSession {
 	

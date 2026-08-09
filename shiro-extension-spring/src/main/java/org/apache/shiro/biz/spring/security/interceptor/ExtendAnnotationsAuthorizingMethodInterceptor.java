@@ -6,6 +6,11 @@ import org.apache.shiro.spring.security.interceptor.AopAllianceAnnotationsAuthor
 
 import java.util.Collection;
 
+/**
+ * Extend Annotations Authorizing Method Interceptor.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public class ExtendAnnotationsAuthorizingMethodInterceptor extends AopAllianceAnnotationsAuthorizingMethodInterceptor {
 
 	public ExtendAnnotationsAuthorizingMethodInterceptor() {

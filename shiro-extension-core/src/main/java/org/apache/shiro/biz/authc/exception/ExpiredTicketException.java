@@ -17,6 +17,11 @@ package org.apache.shiro.biz.authc.exception;
 
 import org.apache.shiro.authc.CredentialsException;
 
+/**
+ * Expired Ticket Exception.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 @SuppressWarnings("serial")
 public class ExpiredTicketException extends CredentialsException {
 

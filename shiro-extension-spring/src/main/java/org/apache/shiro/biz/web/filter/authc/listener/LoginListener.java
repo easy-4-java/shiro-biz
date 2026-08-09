@@ -7,6 +7,11 @@ import org.springframework.core.Ordered;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
+/**
+ * Login Listener.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public interface LoginListener extends Ordered {
 
 	void onFailure(AuthenticationToken token, Exception ex, ServletRequest request, ServletResponse response);

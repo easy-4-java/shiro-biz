@@ -4,6 +4,11 @@ import org.apache.commons.text.StringEscapeUtils;
 
 import java.util.Enumeration;
 
+/**
+ * Escape Html4 Enumeration.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public class EscapeHtml4Enumeration implements Enumeration<String> {
 
 	private Enumeration<String> headers;

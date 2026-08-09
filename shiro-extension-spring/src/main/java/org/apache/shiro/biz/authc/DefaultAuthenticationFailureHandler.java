@@ -21,6 +21,11 @@ import java.nio.charset.StandardCharsets;
 /**
  * Post认证请求失败后的处理实现
  */
+/**
+ * Default Authentication Failure Handler.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public class DefaultAuthenticationFailureHandler implements AuthenticationFailureHandler {
 
 	protected MessageSourceAccessor messages = ShiroBizMessageSource.getAccessor();

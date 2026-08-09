@@ -18,6 +18,11 @@ package org.apache.shiro.biz.web.filter.authc;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
+/**
+ * Authenticating Failure Counter.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public interface AuthenticatingFailureCounter {
 
 	int get(ServletRequest request, ServletResponse response, String retryTimesKeyAttribute);

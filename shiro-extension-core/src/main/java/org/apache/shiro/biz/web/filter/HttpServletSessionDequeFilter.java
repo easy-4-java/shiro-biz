@@ -43,6 +43,11 @@ import java.util.LinkedList;
  *	<p>kickoutUrl：被踢出后重定向到的地址；</p>
  *  <p>部分资料来自：http://jinnianshilongnian.iteye.com/blog/2039760 </p>
  */
+/**
+ * Http Servlet Session Deque Filter.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public abstract class HttpServletSessionDequeFilter extends AccessControlFilter {
 
     /**

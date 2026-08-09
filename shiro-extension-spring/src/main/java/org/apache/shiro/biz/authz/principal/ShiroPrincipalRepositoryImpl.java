@@ -22,6 +22,11 @@ import org.apache.commons.collections.CollectionUtils;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Shiro Principal Repository Impl.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public abstract class ShiroPrincipalRepositoryImpl implements ShiroPrincipalRepository {
 
 	@Override

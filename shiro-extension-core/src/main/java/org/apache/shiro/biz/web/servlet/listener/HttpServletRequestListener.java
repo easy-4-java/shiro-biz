@@ -6,6 +6,11 @@ import javax.servlet.ServletRequestEvent;
 import javax.servlet.ServletRequestListener;
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * Http Servlet Request Listener.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public class HttpServletRequestListener implements ServletRequestListener {
 
 	@Override

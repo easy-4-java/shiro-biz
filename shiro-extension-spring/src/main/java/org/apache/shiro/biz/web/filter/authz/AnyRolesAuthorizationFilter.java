@@ -20,6 +20,11 @@ import org.apache.shiro.subject.Subject;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
+/**
+ * Any Roles Authorization Filter.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public class AnyRolesAuthorizationFilter extends AbstracAuthorizationFilter {
 
 	protected boolean checkRoles(Subject subject, Object mappedValue) {

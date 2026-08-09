@@ -14,6 +14,11 @@ import java.net.NetworkInterface;
  * 优化开源项目：http://git.oschina.net/yu120/sequence
  * </p>
  */
+/**
+ * Sequence.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public class Sequence {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(Sequence.class);

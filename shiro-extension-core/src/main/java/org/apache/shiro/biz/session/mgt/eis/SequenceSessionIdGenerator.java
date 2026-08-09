@@ -21,6 +21,11 @@ import org.apache.shiro.session.mgt.eis.SessionIdGenerator;
 
 import java.io.Serializable;
 
+/**
+ * Sequence Session Id Generator.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public class SequenceSessionIdGenerator implements SessionIdGenerator {
 
 	@Override

@@ -31,6 +31,11 @@ import org.springframework.http.MediaType;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
+/**
+ * Trustable Rest Authenticating Filter.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public class TrustableRestAuthenticatingFilter extends AbstractTrustableAuthenticatingFilter {
 
 	private static final Logger LOG = LoggerFactory.getLogger(TrustableRestAuthenticatingFilter.class);

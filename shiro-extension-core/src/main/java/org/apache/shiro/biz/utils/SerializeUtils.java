@@ -22,6 +22,11 @@ import java.io.ByteArrayOutputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
+/**
+ * Serialize Utils.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public class SerializeUtils extends org.apache.commons.lang3.SerializationUtils {
 	
 	private static Logger LOG = LoggerFactory.getLogger(SerializeUtils.class);

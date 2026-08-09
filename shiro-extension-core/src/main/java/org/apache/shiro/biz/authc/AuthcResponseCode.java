@@ -5,6 +5,11 @@ import org.apache.shiro.biz.web.servlet.http.HttpStatus;
 /**
  * Enumeration of response code.
  */
+/**
+ * Authc Response Code.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public enum AuthcResponseCode {
 	/**
 	 * Authentication Success

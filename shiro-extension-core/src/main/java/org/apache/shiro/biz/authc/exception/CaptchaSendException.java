@@ -17,6 +17,11 @@ package org.apache.shiro.biz.authc.exception;
 
 import org.apache.shiro.authc.CredentialsException;
 
+/**
+ * Captcha Send Exception.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public class CaptchaSendException extends CredentialsException {
 
 	private static final long serialVersionUID = 5804347841925337928L;

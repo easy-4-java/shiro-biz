@@ -25,6 +25,11 @@ import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+ * Subject Utils.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public class SubjectUtils {
 	
 	public static Subject getSubject(){

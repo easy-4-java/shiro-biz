@@ -22,6 +22,11 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 
+/**
+ * Http Servlet Request Referrer Filter.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public class HttpServletRequestReferrerFilter extends AccessControlFilter {
 
 	protected Logger LOG = LoggerFactory.getLogger(getClass());

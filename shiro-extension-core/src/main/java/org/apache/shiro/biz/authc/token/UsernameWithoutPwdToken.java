@@ -3,6 +3,11 @@ package org.apache.shiro.biz.authc.token;
 import org.apache.shiro.authc.HostAuthenticationToken;
 import org.apache.shiro.authc.RememberMeAuthenticationToken;
 
+/**
+ * Username Without Pwd Token.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 @SuppressWarnings("serial")
 public class UsernameWithoutPwdToken implements HostAuthenticationToken, RememberMeAuthenticationToken {
 

@@ -9,6 +9,11 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 
+/**
+ * Parameters.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public abstract class Parameters {
 	
 	static final String PARAMETER_SYSTEM_PREFIX = "shiro.";

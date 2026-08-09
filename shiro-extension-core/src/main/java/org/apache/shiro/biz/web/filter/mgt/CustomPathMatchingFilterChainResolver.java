@@ -14,6 +14,11 @@ import java.util.List;
  * <p>Date: 14-2-25
  * <p>Version: 1.0
  */
+/**
+ * Custom Path Matching Filter Chain Resolver.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public class CustomPathMatchingFilterChainResolver extends PathMatchingFilterChainResolver {
 
     private CustomDefaultFilterChainManager customDefaultFilterChainManager;
