@@ -24,6 +24,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Locale;
 
+/**
+ * Web Thread Context.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public class WebThreadContext extends ThreadContext {
 
     /**

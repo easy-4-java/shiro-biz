@@ -2,6 +2,11 @@ package org.apache.shiro.biz.web.filter;
 
 import org.apache.shiro.web.servlet.AbstractShiroFilter;
 
+/**
+ * Http Servlet Shiro Filter.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public class HttpServletShiroFilter extends AbstractShiroFilter {
 	
 	/*@Override

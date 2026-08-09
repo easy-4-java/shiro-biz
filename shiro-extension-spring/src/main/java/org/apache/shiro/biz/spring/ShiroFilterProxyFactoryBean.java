@@ -12,6 +12,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanInitializationException;
 
+/**
+ * Shiro Filter Proxy Factory Bean.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public class ShiroFilterProxyFactoryBean extends ShiroFilterFactoryBean {
 	
 	private static transient final Logger log = LoggerFactory.getLogger(ShiroFilterProxyFactoryBean.class);

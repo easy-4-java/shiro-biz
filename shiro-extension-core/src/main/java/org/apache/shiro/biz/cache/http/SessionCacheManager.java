@@ -22,6 +22,11 @@ import org.apache.shiro.cache.CacheManager;
 /**
  * 基于Web Session的自定义授权缓存管理类
  */
+/**
+ * Session Cache Manager.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public class SessionCacheManager implements CacheManager {
 
 	@Override

@@ -29,6 +29,11 @@ import java.util.Map;
  * <p>Date: 14-2-26
  * <p>Version: 1.0
  */
+/**
+ * Hmac S H A256 Utils.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public class HmacSHA256Utils {
 
     public static String digest(String key, String content) {

@@ -22,6 +22,11 @@ import org.apache.shiro.web.util.WebUtils;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
+/**
+ * Trustable Form Authenticating Filter.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public class TrustableFormAuthenticatingFilter extends AbstractTrustableAuthenticatingFilter {
 
 	/**

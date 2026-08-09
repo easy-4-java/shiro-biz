@@ -21,6 +21,11 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * Authenticating Failure Request Counter.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public class AuthenticatingFailureRequestCounter implements AuthenticatingFailureCounter {
 
 	public static final String DEFAULT_RETRY_TIMES_KEY_PARAM_NAME = "failureRetries";

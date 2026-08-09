@@ -23,6 +23,11 @@ import java.util.Map;
  * <p>Date: 14-2-25
  * <p>Version: 1.0
  */
+/**
+ * Custom Default Filter Chain Manager.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public class CustomDefaultFilterChainManager extends DefaultFilterChainManager {
 
     private Map<String, String> filterChainDefinitionMap = null;

@@ -17,6 +17,11 @@ package org.apache.shiro.biz.authc.exception;
 
 import org.apache.shiro.authc.CredentialsException;
 
+/**
+ * Expired Captcha Exception.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 @SuppressWarnings("serial")
 public class ExpiredCaptchaException extends CredentialsException {
 

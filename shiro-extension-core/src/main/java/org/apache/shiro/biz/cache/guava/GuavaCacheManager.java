@@ -21,6 +21,11 @@ import org.apache.shiro.cache.AbstractCacheManager;
 import org.apache.shiro.cache.CacheException;
 import org.apache.shiro.util.Destroyable;
 
+/**
+ * Guava Cache Manager.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public class GuavaCacheManager extends AbstractCacheManager implements Destroyable {
 	
 	protected LoadingCache<String, Object> cache;

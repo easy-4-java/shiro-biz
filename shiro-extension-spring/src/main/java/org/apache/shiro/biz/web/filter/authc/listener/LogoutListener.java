@@ -6,6 +6,11 @@ import org.springframework.core.Ordered;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
+/**
+ * Logout Listener.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public interface LogoutListener extends Ordered {
 
 	void beforeLogout(Subject subject, ServletRequest request, ServletResponse response);

@@ -27,6 +27,11 @@ import java.util.concurrent.ExecutionException;
 /**
  * Guava Cache Wrapper
  */
+/**
+ * Guava Cache Wrapper.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public class GuavaCacheWrapper<V> implements Cache<String, V> {
 	
 	protected LoadingCache<String, V> cache;

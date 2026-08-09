@@ -23,6 +23,11 @@ import java.nio.charset.StandardCharsets;
 /**
  * 认证请求成功后的处理实现
  */
+/**
+ * Default Authentication Success Handler.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public class DefaultAuthenticationSuccessHandler  implements AuthenticationSuccessHandler {
 
 	protected MessageSourceAccessor messages = ShiroBizMessageSource.getAccessor();

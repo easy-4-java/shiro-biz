@@ -15,6 +15,11 @@
  */
 package org.apache.shiro.biz.utils;
 
+/**
+ * String Utils2.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public abstract class StringUtils2 {
 	
 	/**

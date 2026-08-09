@@ -20,6 +20,11 @@ import org.apache.shiro.biz.authc.token.CaptchaAuthenticationToken;
 
 import javax.servlet.ServletRequest;
 
+/**
+ * Captcha Resolver.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public interface CaptchaResolver {
 
 	/**

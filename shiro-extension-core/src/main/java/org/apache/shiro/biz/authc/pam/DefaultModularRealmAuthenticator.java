@@ -29,6 +29,11 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * Default Modular Realm Authenticator.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public class DefaultModularRealmAuthenticator extends ModularRealmAuthenticator {
 
 	private static final Logger logger = LoggerFactory.getLogger(DefaultModularRealmAuthenticator.class);
