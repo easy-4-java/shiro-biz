@@ -6,6 +6,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * 登录认证绑定的参数对象Model
  */
+/**
+ * Post Login Request.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public class PostLoginRequest {
 	
     private String username;

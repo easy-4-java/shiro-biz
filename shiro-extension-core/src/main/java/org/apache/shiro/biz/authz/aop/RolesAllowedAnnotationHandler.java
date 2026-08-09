@@ -7,6 +7,11 @@ import org.apache.shiro.biz.authz.annotation.RolesAllowed;
 import java.lang.annotation.Annotation;
 import java.util.Arrays;
 
+/**
+ * Roles Allowed Annotation Handler.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public class RolesAllowedAnnotationHandler extends AuthorizingAnnotationHandler {
 
 	public RolesAllowedAnnotationHandler() {

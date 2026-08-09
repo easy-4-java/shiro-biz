@@ -21,6 +21,11 @@ import org.apache.shiro.session.Session;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
+/**
+ * Authenticating Failure Session Counter.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public class AuthenticatingFailureSessionCounter implements AuthenticatingFailureCounter {
 
 	@Override

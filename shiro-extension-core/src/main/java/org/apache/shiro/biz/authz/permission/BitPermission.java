@@ -40,6 +40,11 @@ import org.apache.shiro.lang.util.StringUtils;
  * <p>Date: 14-1-26
  * <p>Version: 1.0
  */
+/**
+ * Bit Permission.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public class BitPermission implements Permission {
 
     private String resourceIdentify;

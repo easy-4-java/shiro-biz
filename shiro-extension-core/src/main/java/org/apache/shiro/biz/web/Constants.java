@@ -1,5 +1,10 @@
 package org.apache.shiro.biz.web;
 
+/**
+ * Constants.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public class Constants {
 	
 	public static final String PARAM_DIGEST = "digest";

@@ -17,6 +17,11 @@ package org.apache.shiro.biz.authc.exception;
 
 import org.apache.shiro.authc.AuthenticationException;
 
+/**
+ * Terminal Restricted Exception.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 @SuppressWarnings("serial")
 public class TerminalRestrictedException extends AuthenticationException {
 

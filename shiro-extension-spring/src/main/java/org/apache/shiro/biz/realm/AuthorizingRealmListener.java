@@ -21,6 +21,11 @@ import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.springframework.core.Ordered;
 
+/**
+ * Authorizing Realm Listener.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public interface AuthorizingRealmListener extends Ordered {
 
 	/**

@@ -5,6 +5,11 @@ import java.util.ArrayList;
 /**
  * Auth response for interacting with client.
  */
+/**
+ * Authc Response.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public class AuthcResponse {
 	
 	private static final String RT_SUCCESS = "success";

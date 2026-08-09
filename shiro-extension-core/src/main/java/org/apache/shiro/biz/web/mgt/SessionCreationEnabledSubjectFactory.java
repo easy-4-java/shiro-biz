@@ -19,6 +19,11 @@ import org.apache.shiro.subject.Subject;
 import org.apache.shiro.subject.SubjectContext;
 import org.apache.shiro.web.mgt.DefaultWebSubjectFactory;
 
+/**
+ * Session Creation Enabled Subject Factory.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public class SessionCreationEnabledSubjectFactory extends DefaultWebSubjectFactory {
 	
 	/**

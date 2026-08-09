@@ -4,6 +4,11 @@ import org.apache.shiro.session.Session;
 
 import java.io.Serializable;
 
+/**
+ * Session Control.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 @SuppressWarnings("serial")
 public class SessionControl implements Serializable {
 

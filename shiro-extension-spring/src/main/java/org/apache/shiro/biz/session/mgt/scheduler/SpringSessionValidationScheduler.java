@@ -21,6 +21,11 @@ import java.util.concurrent.TimeUnit;
  * <p>Date: 13-7-2 下午5:33
  * <p>Version: 1.0
  */
+/**
+ * Spring Session Validation Scheduler.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public class SpringSessionValidationScheduler implements SessionValidationScheduler {
 
     //TODO - complete JavaDoc

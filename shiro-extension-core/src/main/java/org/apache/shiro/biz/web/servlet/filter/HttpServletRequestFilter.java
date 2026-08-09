@@ -11,6 +11,11 @@ import javax.servlet.ServletResponse;
 import java.io.IOException;
 
 
+/**
+ * Http Servlet Request Filter.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public class HttpServletRequestFilter extends OncePerRequestFilter {
 
 	protected String redirectURL = "";

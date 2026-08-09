@@ -26,6 +26,11 @@ import java.util.Set;
 /**
  * Caffeine Cache Wrapper
  */
+/**
+ * Caffeine Cache Wrapper.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public class CaffeineCacheWrapper<V> implements Cache<String, V> {
 
 	protected LoadingCache<String, V> cache;

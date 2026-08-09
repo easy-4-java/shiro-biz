@@ -2,6 +2,11 @@ package org.apache.shiro.biz.web;
 
 import java.util.Locale;
 
+/**
+ * Parameter.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public enum Parameter {
 	
 	/**

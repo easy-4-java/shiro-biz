@@ -26,6 +26,11 @@ import org.springframework.core.Ordered;
  * Simple adapter implementation of the {@link AuthenticationListener} interface, effectively providing
  * no-op implementations of all methods.
  */
+/**
+ * Authentication Listener Adapter.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ */
 public class AuthenticationListenerAdapter implements AuthenticationListener, Ordered {
 
 	@Override
