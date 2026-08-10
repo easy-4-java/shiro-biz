@@ -499,6 +499,7 @@
         <assertj.version>3.27.3</assertj.version>
         <mockito.version>4.11.0</mockito.version>
         <java.version>1.8</java.version>
+        <maven.compiler.release>${java.version}</maven.compiler.release>
         <easy4j-jwt-issuer.version>1.0.x.20260630-SNAPSHOT</easy4j-jwt-issuer.version>
         <maven.version>3.0</maven.version>
         <!-- Maven Plugin versions -->
