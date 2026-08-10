@@ -13,7 +13,7 @@ import java.io.IOException;
 
 /**
  * 基于StringEscapeUtils.escapeHtml4()方法的XSS(Cross Site Scripting)，即跨站脚本攻击请求过滤
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  */
 public class HttpServletRequestEscapeHtml4Filter extends AccessControlFilter {
 	

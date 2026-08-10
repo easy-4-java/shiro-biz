@@ -2,7 +2,7 @@ package org.apache.shiro.biz.web.servlet.http;
 
 /**
  * 标准Http状态码+自定义Http状态码
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  */
 public interface HttpStatus {
 

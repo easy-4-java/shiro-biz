@@ -19,7 +19,7 @@ import org.apache.shiro.authc.AccountException;
 
 /**
  * 验证码必须异常
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  */
 public class NoneTicketException extends AccountException {
 

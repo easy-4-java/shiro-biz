@@ -28,7 +28,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * 基于Guava提供的限流工具类RateLimiter实现的访问请求限流过滤器
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  */
 public class HttpServletRequestLimitWithIPFilter extends AccessControlFilter {
 	

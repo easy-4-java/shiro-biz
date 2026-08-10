@@ -25,7 +25,7 @@ import java.util.Set;
 /**
  * Spring Cache Wrapper
  * @author wangjie (https://github.com/wj596)
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  */
 @SuppressWarnings({ "unchecked" })
 public class SpringCache<K, V> implements Cache<K, V> {

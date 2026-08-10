@@ -35,7 +35,7 @@ import java.util.Set;
 /**
  * <b>抽象Realm</b> 
  * <p>公共需要做的事：1.记录日志；2.提高更高级api；3.封装内部处理逻辑；4.事件监听；</p>
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  */
 @SuppressWarnings("unchecked")
 public abstract class AbstractAuthorizingRealm extends AuthorizingRealm {
@@ -67,7 +67,7 @@ public abstract class AbstractAuthorizingRealm extends AuthorizingRealm {
 	/**
 	 * 获取授权信息;
 	 * 
-	 * @author [@Loong Wan](https://github.com/loong10k)
+	 * @author <a href="https://github.com/loong10k">Loong Wan</a>
 	 * @param principals : PrincipalCollection是一个身份集合，因为我们现在就一个Realm，所以直接调用getPrimaryPrincipal得到之前传入的用户名即可；然后根据用户名调用UserService接口获取角色及权限信息。
 	 * @return 授权信息
 	 */
@@ -111,7 +111,7 @@ public abstract class AbstractAuthorizingRealm extends AuthorizingRealm {
 	 * 
 	 *  </pre>
 	 * 
-	 * @author [@Loong Wan](https://github.com/loong10k)
+	 * @author <a href="https://github.com/loong10k">Loong Wan</a>
 	 * @param token 认证Token
 	 * @return 授权信息
 	 * @throws AuthenticationException 认证异常

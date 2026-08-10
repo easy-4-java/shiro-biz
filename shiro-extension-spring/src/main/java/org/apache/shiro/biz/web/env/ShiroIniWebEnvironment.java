@@ -27,7 +27,7 @@ import org.apache.shiro.web.filter.mgt.PathMatchingFilterChainResolver;
 import javax.servlet.Filter;
 
 /**
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  */
 public class ShiroIniWebEnvironment extends IniWebEnvironment {
 

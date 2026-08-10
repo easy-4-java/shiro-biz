@@ -18,7 +18,7 @@ package org.apache.shiro.biz.authz.principal;
 import java.io.Serializable;
 
 /**
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  */
 @SuppressWarnings("serial")
 public class ShiroRole implements Serializable {

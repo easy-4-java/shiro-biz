@@ -16,7 +16,7 @@
 package org.apache.shiro.biz.authc.token;
 /**
  * 登录类型枚举；1：系统正常登录；2：外部单点登录；3：外部票据登录（通过握手秘钥等参数认证登录）
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  */
 public enum LoginType {
 

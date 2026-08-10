@@ -17,7 +17,7 @@ package org.apache.shiro.biz.web.filter;
 
 /**
  * 常用的Http Header 配置
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  */
 public class HttpServletHeaderProperties {
 	

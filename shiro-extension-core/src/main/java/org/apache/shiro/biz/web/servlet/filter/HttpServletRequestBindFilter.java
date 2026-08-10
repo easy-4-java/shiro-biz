@@ -11,7 +11,7 @@ import java.io.IOException;
 
 /**
  * WebThreadContext对象绑定过滤器
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  */
 public class HttpServletRequestBindFilter extends OncePerRequestFilter {
 	

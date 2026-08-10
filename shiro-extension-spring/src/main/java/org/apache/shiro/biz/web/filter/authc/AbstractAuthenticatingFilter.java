@@ -58,7 +58,7 @@ import java.util.List;
 
 /**
  * 抽象的认证 (authentication)过滤器
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  */
 public abstract class AbstractAuthenticatingFilter extends FormAuthenticationFilter {
 

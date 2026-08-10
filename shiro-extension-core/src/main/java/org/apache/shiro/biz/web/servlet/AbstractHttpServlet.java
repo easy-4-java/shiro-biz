@@ -11,7 +11,7 @@ import java.io.IOException;
 
 /**
  * 基础HttpServlet
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  */
 @SuppressWarnings("serial")
 public abstract class AbstractHttpServlet extends HttpServlet {

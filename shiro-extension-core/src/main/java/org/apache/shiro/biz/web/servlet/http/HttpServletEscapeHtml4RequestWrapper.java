@@ -13,7 +13,7 @@ import java.util.Map.Entry;
 
 /**
  * 使用 StringEscapeUtils.escapeHtml4()对Http请求中的  Parameter，Header 进行统一的转码处理
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  */
 public class HttpServletEscapeHtml4RequestWrapper extends HttpServletRequestWrapper {
 	

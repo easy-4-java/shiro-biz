@@ -31,7 +31,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * MD5加密对比, 密码重试限制, 默认是5次
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  */
 public class DefaultCredentialsMatcher extends CodecSupport implements CredentialsMatcher {
 

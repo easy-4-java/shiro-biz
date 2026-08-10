@@ -27,7 +27,7 @@ import java.util.Set;
  * 
  * TODO
  * 
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @see org.apache.shiro.web.filter.authz.RolesAuthorizationFilter
  */
 public class RolesAuthorizationFilter extends AbstracAuthorizationFilter {

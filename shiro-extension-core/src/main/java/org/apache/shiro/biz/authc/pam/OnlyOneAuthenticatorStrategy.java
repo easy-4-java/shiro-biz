@@ -29,7 +29,7 @@ import java.util.Collection;
 
 /**
  * 唯一认证策略实现
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  */
 public class OnlyOneAuthenticatorStrategy extends AbstractAuthenticationStrategy {
 

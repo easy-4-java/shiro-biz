@@ -26,7 +26,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * 密码校验器，支持重复提交次数校验，防范暴力破解
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  */
 public class CredentialsRetryLimitCredentialsMatcher extends HashedCredentialsMatcher {
 

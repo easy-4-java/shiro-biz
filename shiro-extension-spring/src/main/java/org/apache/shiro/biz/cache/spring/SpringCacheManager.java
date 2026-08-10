@@ -25,7 +25,7 @@ import java.util.concurrent.ConcurrentMap;
 /**
  * Spring CacheManager Wrapper
  * @author wangjie (https://github.com/wj596)
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  */
 @SuppressWarnings({ "unchecked", "rawtypes" })
 public class SpringCacheManager implements CacheManager {

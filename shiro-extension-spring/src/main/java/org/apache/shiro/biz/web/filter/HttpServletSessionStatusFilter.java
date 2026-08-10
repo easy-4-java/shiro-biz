@@ -22,7 +22,7 @@ import java.util.Map;
 
 /**
  * 在线状态会话过滤器
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * http://jinnianshilongnian.iteye.com/blog/2047643
  */
 public class HttpServletSessionStatusFilter extends AccessControlFilter {

@@ -19,7 +19,7 @@ import org.apache.shiro.authc.AccountException;
 
 /**
  * 用户状态异常
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  */
 public class InvalidStateException extends AccountException{
 
