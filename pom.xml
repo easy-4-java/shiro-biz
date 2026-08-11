@@ -527,6 +527,8 @@
         <xstream.version>1.4.16</xstream.version>
         <jackson.version>2.17.2</jackson.version>
         <maven-central-publishing-plugin.version>0.11.0</maven-central-publishing-plugin.version>
+        <jacoco-maven-plugin.version>0.8.15</jacoco-maven-plugin.version>
+        <lombok.version>1.18.46</lombok.version>
     </properties>
 
     <!-- 依赖版本统一管理（dependencyManagement） -->
