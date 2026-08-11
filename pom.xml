@@ -524,6 +524,8 @@
         <spring.version>5.3.36</spring.version>
         <xstream.version>1.4.16</xstream.version>
         <jackson.version>2.17.2</jackson.version>
+        <lombok.version>1.18.46</lombok.version>
+        <maven-jacoco-plugin.version>0.8.15</maven-jacoco-plugin.version>
     </properties>
 
     <!-- 依赖版本统一管理（dependencyManagement） -->
