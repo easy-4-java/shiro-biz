@@ -525,7 +525,7 @@
         <slf4j.version>2.0.18</slf4j.version>
         <spring.version>5.3.36</spring.version>
         <xstream.version>1.4.16</xstream.version>
-        <jackson.version>2.17.2</jackson.version>
+        <jackson-bom.version>2.18.9</jackson-bom.version>
         <maven-central-publishing-plugin.version>0.11.0</maven-central-publishing-plugin.version>
         <jacoco-maven-plugin.version>0.8.15</jacoco-maven-plugin.version>
         <lombok.version>1.18.46</lombok.version>
@@ -534,6 +534,13 @@
     <!-- 依赖版本统一管理（dependencyManagement） -->
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>com.fasterxml.jackson</groupId>
+                <artifactId>jackson-bom</artifactId>
+                <version>${jackson-bom.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <!-- For Junit -->
             <dependency>
                 <groupId>junit</groupId>
@@ -626,12 +633,6 @@
                 <groupId>com.thoughtworks.xstream</groupId>
                 <artifactId>xstream</artifactId>
                 <version>${xstream.version}</version>
-            </dependency>
-            <!-- For Jackson -->
-            <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-databind</artifactId>
-                <version>${jackson.version}</version>
             </dependency>
             <!-- For Shiro -->
             <dependency>
