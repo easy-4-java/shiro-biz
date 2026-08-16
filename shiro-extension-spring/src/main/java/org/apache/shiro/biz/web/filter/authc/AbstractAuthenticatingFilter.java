@@ -17,7 +17,6 @@ package org.apache.shiro.biz.web.filter.authc;
 
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.net.HttpHeaders;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -56,6 +55,10 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
 
+import tools.jackson.core.JacksonException;
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.json.JsonMapper;
+
 /**
  * 抽象的认证 (authentication)过滤器
  * @author [@Loong Wan](https://github.com/loong10k)
@@ -91,7 +94,7 @@ public abstract class AbstractAuthenticatingFilter extends FormAuthenticationFil
      */
     private String unauthorizedUrl;
 	
-    protected ObjectMapper objectMapper = new ObjectMapper();
+    protected ObjectMapper objectMapper = new JsonMapper();
 	
 	public AbstractAuthenticatingFilter() {
 		setLoginUrl(DEFAULT_LOGIN_URL);
@@ -152,8 +155,8 @@ public abstract class AbstractAuthenticatingFilter extends FormAuthenticationFil
 				String host = getHost(request);
 				
 				return new DefaultAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword(), loginRequest.isRememberMe(), host);
-				
-			} catch (IOException e) {
+
+			} catch (IOException | JacksonException e) {
 			}
 		
 		}
