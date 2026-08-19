@@ -62,10 +62,6 @@
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>${maven-compiler-plugin.version}</version>
                     <configuration>
-                        <!-- 源代码编译版本 -->
-                        <source>${java.version}</source>
-                        <!-- 目标平台编译版本 -->
-                        <target>${java.version}</target>
                         <!-- 字符集编码 -->
                         <encoding>${project.build.sourceEncoding}</encoding>
                         <!-- 编译最大内存 -->
@@ -314,8 +310,6 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
                     <!-- 保留方法参数名，支持 Spring MVC 按参数名绑定 -->
                     <parameters>true</parameters>
                     <encoding>${project.build.sourceEncoding}</encoding>
@@ -502,7 +496,7 @@
         <java.version>17</java.version>
         <maven.compiler.release>${java.version}</maven.compiler.release>
         <easy4j-jwt-issuer.version>2.0.x.20260630-SNAPSHOT</easy4j-jwt-issuer.version>
-        <maven.version>3.0</maven.version>
+        <maven.version>3.9.16</maven.version>
         <!-- Maven Plugin versions -->
         <maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
         <maven-clean-plugin.version>3.5.0</maven-clean-plugin.version>
