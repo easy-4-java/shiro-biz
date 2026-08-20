@@ -43,10 +43,10 @@
         <!-- Dependency versions -->
         <assertj.version>3.27.3</assertj.version>
         <caffeine.version>2.9.3</caffeine.version>
-        <commons-codec.version>1.18.0</commons-codec.version>
-        <commons-io.version>2.20.0</commons-io.version>
-        <commons-lang3.version>3.18.0</commons-lang3.version>
-        <commons-text.version>1.13.0</commons-text.version>
+        <commons-codec.version>1.22.0</commons-codec.version>
+        <commons-io.version>2.22.0</commons-io.version>
+        <commons-lang3.version>3.20.0</commons-lang3.version>
+        <commons-text.version>1.15.0</commons-text.version>
         <easy4j-jwt-issuer.version>3.0.x.20260630-SNAPSHOT</easy4j-jwt-issuer.version>
         <ehcache3.version>3.6.3</ehcache3.version>
         <fastjson2.version>2.0.52</fastjson2.version>
