@@ -220,10 +220,10 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-    <modules>
-        <module>shiro-extension-core</module>
-        <module>shiro-extension-spring</module>
-    </modules>
+    <subprojects>
+        <subproject>shiro-extension-core</subproject>
+        <subproject>shiro-extension-spring</subproject>
+    </subprojects>
     <!-- 制品发布仓库配置（distributionManagement） -->
     <distributionManagement>
         <repository>
@@ -503,7 +503,6 @@
             <properties>
                 <!-- ═══ 第一段: 基础属性（自然排序）═══ -->
                 <!-- ═══ Dependency versions（自然排序）═══ -->
-                <additionalparam>-Xdoclint:none</additionalparam>
                 <lombok.version>1.18.46</lombok.version>
                 <!-- ═══ Maven Plugin versions（自然排序）═══ -->
                 <maven-central-publishing-plugin.version>0.11.0</maven-central-publishing-plugin.version>
